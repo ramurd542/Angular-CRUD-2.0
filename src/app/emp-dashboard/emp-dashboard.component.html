@@ -1,0 +1,40 @@
+<div>
+<nav class="navbar navbar-light bg-primary">
+  <div class="contatiner-fluid" style="display: contents;">
+    <h1 style="color:aliceblue">  {{emp_dashboard_title}}</h1>
+    <div class="d-flex mx-3">
+      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+        Add Employee
+      </button>
+    </div>
+  </div>
+</nav>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Employee ID</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email ID</th>
+      <th scope="col">Mobile No</th>
+      <th scope="col"> Salary</th>
+      <th scope="col"> Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of employeeList;index as i;">
+
+      <td>{{emp.id}}</td>
+      <td>{{emp.firstname}}</td>
+      <td>{{emp.lastname}}</td>
+      <td>{{emp.emailID}}</td>
+      <td>{{emp.salary}}</td>
+      <td>{{emp.mobilenumber}}</td>
+      <td>
+        <button class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Edit</button>
+        <button class="btn btn-danger mx-3" >Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
