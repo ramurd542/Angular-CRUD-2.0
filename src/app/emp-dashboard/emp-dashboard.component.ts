@@ -15,10 +15,4 @@ export class EmpDashboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  //set empty employee object
-  makeEmptyEmpObject(){
-
-  }
-
 }
