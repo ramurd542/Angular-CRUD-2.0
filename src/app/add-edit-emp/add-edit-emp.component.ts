@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder,FormGroup } from '@angular/forms';
-import { Employee } from '../shared/interfaces/employee';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder,FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-edit-emp',
@@ -8,9 +7,7 @@ import { Employee } from '../shared/interfaces/employee';
   styleUrls: ['./add-edit-emp.component.scss']
 })
 export class AddEditEmpComponent implements OnInit {
-  empformvalue!: FormGroup;
-  formvalue!: FormGroup;
-  employeeObj! : Employee;
+  @Input() empformvalue!: FormGroup;
   constructor(private formbuilder: FormBuilder) { }
 
   ngOnInit() {
@@ -18,7 +15,6 @@ export class AddEditEmpComponent implements OnInit {
   }
 
   makeEmpObjEmpty(){
-    this.employeeObj= new Employee();
     this.empformvalue = this.formbuilder.group({
       employeeID :[''],
       firstname:[''],
@@ -28,5 +24,4 @@ export class AddEditEmpComponent implements OnInit {
       mobilenumber:['']
    });
   }
-
 }

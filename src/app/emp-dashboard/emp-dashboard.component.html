@@ -31,7 +31,7 @@
       <td>{{emp.salary}}</td>
       <td>{{emp.mobilenumber}}</td>
       <td>
-        <button class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Edit</button>
+        <button class="btn btn-success" data-toggle="modal" (click)="updateEmployee()" data-target="#exampleModal">Edit</button>
         <button class="btn btn-danger mx-3" >Delete</button>
       </td>
     </tr>
@@ -52,7 +52,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" #closeModal data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">{{false ? 'Edit' : 'Add'}}</button>
+        <button type="button" class="btn btn-primary" (click)="addNewItem()">{{edit ? 'Edit' : 'Add'}}</button>
       </div>
     </div>
   </div>

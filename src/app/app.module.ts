@@ -6,6 +6,7 @@ import { EmpDashboardComponent } from './emp-dashboard/emp-dashboard.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AddEditEmpComponent } from './add-edit-emp/add-edit-emp.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
