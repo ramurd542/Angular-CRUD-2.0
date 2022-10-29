@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup, Validators } from '@angular/forms';
+import { Employee } from '../shared/interfaces/employee';
+import { EmpserviceService } from '../shared/shared-service/empservice.service';
 
 @Component({
   selector: 'app-add-edit-emp',
@@ -7,11 +9,14 @@ import { FormBuilder,FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./add-edit-emp.component.scss']
 })
 export class AddEditEmpComponent implements OnInit {
-  @Input() empformvalue!: FormGroup;
-  constructor(private formbuilder: FormBuilder) { }
+  empformvalue!: FormGroup;
+  @Input() emp!:Employee;
+  constructor(private formbuilder: FormBuilder, private empService : EmpserviceService) { }
 
   ngOnInit() {
+
     this.makeEmpObjEmpty();
+
   }
 
   makeEmpObjEmpty(){

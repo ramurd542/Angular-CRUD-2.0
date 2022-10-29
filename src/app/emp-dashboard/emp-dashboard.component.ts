@@ -29,12 +29,17 @@ export class EmpDashboardComponent {
 
   addNewItem(){
     this.createEmpObj();
-    this.empService.AddEmployeee(this.employeeObj).subscribe((response)=>{
+    if(!this.edit){
+      this.empService.AddEmployeee(this.employeeObj).subscribe((response)=>{
       console.log(response);
       alert("Employee Created");
       this.getAllEmployees(); //This will refreshes the Employee Dashboard grid.
       this.add_edit_child.makeEmpObjEmpty(); // Reset add employee form after creting new employee.
-    });
+      });
+    }
+    else{
+      this.updateEmployee(this.employeeObj);
+    }
   }
 
   createEmpObj(){
@@ -48,12 +53,40 @@ export class EmpDashboardComponent {
     this.employeeObj.mobilenumber = this.empFormValue.value.mobilenumber;
   }
 
-  updateEmployee(){
-    this.createEmpObj();
+  updateEmployeeForm(emp:Employee){
     this.edit = true;
-    this.empService.updateEmployee(this.employeeObj).subscribe((response)=>{
-      alert('Updated Employee');
-      this.getAllEmployees();
+    this.setEmpForm(emp);
+  }
+
+  updateEmployee(emp:Employee){
+    this.setEmpForm(emp);
+    this.empService.updateEmployee(emp).subscribe((response)=>{
+     alert('Updated Employee');
+     this.getAllEmployees();
+   });
+  }
+
+  setEmpForm(emp:Employee){
+    this.employeeObj = emp;
+    this.add_edit_child.empformvalue = this.formbuilder.group({
+      id:[emp.id],
+      employeeID :[emp.id],
+      firstname:[emp.firstname],
+      lastname:[emp.lastname],
+      emailID:[emp.emailID],
+      salary:[emp.salary],
+      mobilenumber:[emp.mobilenumber]
     });
+  }
+
+  deleteEmployee(emp:Employee){
+    this.empService.deleteEmployee(emp.id).subscribe((response)=>{
+      alert('Employee Deleted');
+      this.getAllEmployees();
+    })
+  }
+
+  clearEmployeeFormOnClose(){
+    this.add_edit_child.makeEmpObjEmpty();
   }
 }

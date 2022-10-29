@@ -31,8 +31,8 @@
       <td>{{emp.salary}}</td>
       <td>{{emp.mobilenumber}}</td>
       <td>
-        <button class="btn btn-success" data-toggle="modal" (click)="updateEmployee()" data-target="#exampleModal">Edit</button>
-        <button class="btn btn-danger mx-3" >Delete</button>
+        <button class="btn btn-success" data-toggle="modal" (click)="updateEmployeeForm(emp)" data-target="#exampleModal">Edit</button>
+        <button class="btn btn-danger mx-3" (click)="deleteEmployee(emp)" >Delete</button>
       </td>
     </tr>
   </tbody>
@@ -43,15 +43,15 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">{{false ? 'Edit Employee' : 'Add Employee'}}</h5>
-        <button type="button" class="close" data-dismiss="modal"  aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" (click)="clearEmployeeFormOnClose()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-         <app-add-edit-emp></app-add-edit-emp>
+         <app-add-edit-emp [emp]="employeeObj"></app-add-edit-emp>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" #closeModal data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" #closeModal (click)="clearEmployeeFormOnClose()" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" (click)="addNewItem()">{{edit ? 'Edit' : 'Add'}}</button>
       </div>
     </div>
